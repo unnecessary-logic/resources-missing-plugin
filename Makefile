@@ -8,7 +8,11 @@ build:
 
 # Copy onto PATH so `kubectl resources-missing` is discovered.
 install: build
+	install -d $(shell go env GOPATH)/bin
 	install -m 0755 bin/$(BINARY) $(shell go env GOPATH)/bin/$(BINARY)
 
 clean:
 	rm -rf bin
+
+test:
+	go test ./...

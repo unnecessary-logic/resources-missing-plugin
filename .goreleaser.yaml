@@ -38,6 +38,9 @@ checksum:
 snapshot:
   version_template: "{{ incpatch .Version }}-next"
 
+release:
+  mode: keep-existing
+
 changelog:
   sort: asc
   filters:

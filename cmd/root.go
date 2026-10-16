@@ -28,12 +28,12 @@ func RootCmd() *cobra.Command {
 
 			config, err := configFlags.ToRESTConfig()
 			if err != nil {
-				return fmt.Errorf("Error loading kubeconfig: %s", err)
+				return fmt.Errorf("error loading kubeconfig: %s", err)
 			}
 
 			client, err := kubernetes.NewForConfig(config)
 			if err != nil {
-				return fmt.Errorf("Error creating client: %s", err)
+				return fmt.Errorf("error creating client: %s", err)
 			}
 
 			out := cmd.OutOrStdout()
@@ -43,11 +43,11 @@ func RootCmd() *cobra.Command {
 
 			results, err := scan.RunScan(cmd.Context(), client, namespace)
 			if err != nil {
-				return fmt.Errorf("Error listing pods: %s", err)
+				return fmt.Errorf("error listing pods: %s", err)
 			}
 			output.Discovery(out, results)
 
-			return err
+			return nil
 		},
 	}
 

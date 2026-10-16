@@ -1,0 +1,25 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: missing-resources
+  namespace: default
+spec:
+  initContainers:
+    - name: init-app
+      image: busybox:1.36
+      command: ["sh", "-c", "echo init done"]
+      resources:
+        requests:
+          memory: 100Mi
+        limits:
+          memory: 200Mi
+  containers:
+    - name: app
+      image: nginx:1.27
+      resources:
+        requests:
+          cpu: 0.1
+          memory: 100Mi
+        limits:
+          cpu: 0.2
+          memory: 200Mi

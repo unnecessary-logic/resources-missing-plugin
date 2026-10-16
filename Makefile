@@ -4,7 +4,7 @@ VERSION ?= $(shell git describe --tags --always --dirty 2>/dev/null || echo dev)
 .PHONY: build install clean
 
 build:
-	go build -ldflags "-s -w -X main.version=$(VERSION)" -o bin/$(BINARY) .
+	go build -ldflags "-s -w -X github.com/unnecessary-logic/resources-missing-plugin/cmd.version=$(VERSION) .
 
 # Copy onto PATH so `kubectl resources-missing` is discovered.
 install: build

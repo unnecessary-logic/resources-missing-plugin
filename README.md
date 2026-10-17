@@ -21,6 +21,27 @@ kubectl resources-missing --help
 ```
 
 ## Installation
+
+### Install by Release
+
+You can download the latest release and architecture-specific binary from the GitHub releases page, then add the downloaded binary to your `PATH`.
+
+```bash
+# Example for macOSX / linux / WSL
+export VERSION=0.1.0
+export OS=$(uname | tr '[:upper:]' '[:lower:]')
+export ARCH=$(uname -m | sed 's/x86_64/amd64/; s/aarch64/arm64/')
+
+wget https://github.com/unnecessary-logic/resources-missing-plugin/releases/download/v${VERSION}/kubectl-resources_missing_${VERSION}_${OS}_${ARCH}.tar.gz
+
+tar -xzf kubectl-resources_missing_${VERSION}_${OS}_${ARCH}.tar.gz kubectl-resources_missing
+
+chmod +x kubectl-resources_missing
+
+sudo mv kubectl-resources_missing /usr/local/bin/
+```
+
+### Install by Clone and Build
 ```
 # You can pull the repo down and install it using make build and make install commands like so:
 
